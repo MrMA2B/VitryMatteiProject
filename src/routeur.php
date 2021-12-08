@@ -1,6 +1,6 @@
 <?php
 
-/* namespace App;
+ namespace App;
 
 use App\controller\PostController;
 
@@ -8,6 +8,9 @@ class Router
 {
     public function run()
     {
+
+        var_dump("Hello");
+        die();
         $route = $_GET['route'] ?? null;
         $action = $_GET['action'] ?? null;
 
@@ -30,4 +33,4 @@ class Router
         }
     }
 }
-*/
+
