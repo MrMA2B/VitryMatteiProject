@@ -4,9 +4,9 @@ namespace App;
 
 abstract class Database
 {
-    const DB_HOST = 'mysql:host=localhost;dbname=training-blog;charset=utf8';
+    const DB_HOST = 'mysql:host=localhost;dbname=vitrymatteiproject;charset=utf8';
     const DB_USER = 'root';
-    const DB_PASSWORD = 'root';
+    const DB_PASSWORD = '';
 
     private $connection;
 
@@ -42,7 +42,9 @@ abstract class Database
         $result = $this->checkConnection()->prepare($sql);
         //$result->setFetchMode(\PDO::FETCH_CLASS, static::class);
         $result->execute($parameters);
-
+        
+    
+        
         return $result;
     }
 }

@@ -3,26 +3,26 @@
 namespace App\repository;
 
 use App\Database;
-use App\model\Post as ModelPost;
+use App\model\Voiture;
 
-class PostRepository extends Database
+class VoitureRepository extends Database
 {
-    public function getPosts()
+    public function getVoitures()
     {
-        $connection = (new Database())->getConnection();
-
-        return $connection->query('SELECT * FROM post');
+         
+        $query=$this->createQuery('SELECT * FROM voiture');
+        $values=$query->fetchAll(\PDO::FETCH_ASSOC);
+       
+      
+        $voitures= array();
+        for ($i=0;$i<sizeof($values);$i++){
+            $voitures[$i]=$this->buildObject($values[$i]);
+        }
+        return $voitures;
+    
     }
 
-    public function get(int $id)
-    {
-        $result = $this->createQuery(
-            'SELECT * FROM post WHERE id = :postId',
-            ['postId' => $id]
-        );
-        
-        return $this->buildObject($result->fetch());
-    }
+  
 
     public function create(array $data = [])
     {
@@ -37,16 +37,17 @@ class PostRepository extends Database
         );
     }
 
-    private function buildObject(array $row): ModelPost
+    private function buildObject(array $row): Voiture
     {
-        $post = new ModelPost;
-        $post->setId((int) $row['id']);
-        $post->setTitle($row['title']);
-        $post->setContent($row['content']);
-        $post->setCreatedAt(new \DateTime($row['createdAt']));
-        $post->setUpdatedAt(isset($row['updatedAt']) ? new \DateTime($row['updatedAt']) : null);
-        $post->setDeletedAt(isset($row['deletedAt']) ? new \DateTime($row['deletedAt']) : null);
-        $post->setAuthorId($row['authorId']);
+        $post = new Voiture;
+        $post->setModele($row['modele']);
+        $post->setMarque($row['marque']);
+        $post->setKilometre($row['kilometre']);
+        $post->setIsSold($row['sold']);
+        $post->setImmat($row['immat']);
+ 
+        $post->setDateVoiture($row['dateVoiture']);
+        $post->setColor($row['color']);
 
         return $post;
     }

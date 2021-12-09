@@ -2,96 +2,115 @@
 
 namespace App\model;
 
-class Post
+class Voiture
 {
-    private int $id;
-    private string $title;
-    private string $content;
-    private \DateTime $createdAt;
-    private ?\DateTime $updatedAt;
-    private ?\DateTime $deletedAt;
-    private int $authorId;
 
-    public function getId(): int
+   
+
+
+    private  $immat;
+    private  $marque;
+    private  $modele;
+    private $color;
+    private  $isSold;
+    private  $dateAchat = null;
+    private $dateVoiture;
+    private $kilometre;
+
+
+    
+    public function getImmat()
     {
-        return $this->id;
+        return $this->immat;
     }
 
-    public function setId(int $id): self
+    public function setImmat(string $immat)
     {
-        $this->id = $id;
+        $this->immat = $immat;
 
         return $this;
     }
 
-    public function getTitle()
+    public function getMarque()
     {
-        return $this->title;
+        return $this->marque;
     }
 
-    public function setTitle(string $title): self
+    public function setMarque(string $marque)
     {
-        $this->title = $title;
-
-        return $this;
-    }
- 
-    public function getContent()
-    {
-        return $this->content;
-    }
-
-    public function setContent($content)
-    {
-        $this->content = $content;
-
-        return $this;
-    }
-
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
- 
-    public function setUpdatedAt(?\DateTime $updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
+        $this->marque = $marque;
 
         return $this;
     }
  
-    public function getDeletedAt()
+    public function getModele()
     {
-        return $this->deletedAt;
+        return $this->modele;
     }
 
-    public function setDeletedAt(?\DateTime $deletedAt)
+    public function setModele(string $modele)
     {
-        $this->deletedAt = $deletedAt;
+        $this->modele = $modele;
 
         return $this;
     }
 
-    public function getAuthorId()
+    public function getColor()
     {
-        return $this->authorId;
+        return $this->color;
     }
 
-    public function setAuthorId($authorId)
+    public function setColor(string $color)
     {
-        $this->authorId = $authorId;
+        $this->color = $color;
+
+        return $this;
+    }
+
+    public function getIsSold()
+    {
+        return $this->isSold;
+    }
+ 
+    public function setIsSold(string $isSold)
+    {
+        $this->isSold = $isSold;
+
+        return $this;
+    }
+ 
+    public function getDateAchat()
+    {
+        return $this->dateAchat;
+    }
+
+    public function setDateAchat(string $dateAchat)
+    {
+        $this->dateAchat = $dateAchat;
+
+        return $this;
+    }
+
+    public function getDateVoiture()
+    {
+        return $this->dateVoiture;
+    }
+
+    public function setDateVoiture(string $dateVoiture)
+    {
+        $this->dateVoiture = $dateVoiture;
+
+        return $this;
+    }
+
+    public function getKilometre()
+    {
+        return $this->kilometre;
+    }
+
+    public function setKilometre(int $kilometre)
+    {
+        $this->kilometre = $kilometre;
 
         return $this;
     }

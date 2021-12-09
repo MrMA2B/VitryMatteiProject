@@ -2,7 +2,7 @@
 
 namespace App;
 
-use App\controller\PostController;
+use App\controller\VoitureController;
 
 class Router
 {
@@ -13,7 +13,8 @@ class Router
       
         if ($action=='read'){
             echo ('abc');
-        
+            $voitureController = new VoitureController();
+            return $voitureController->readAll();
           
         } else {
             var_dump('hello');
@@ -23,3 +24,20 @@ class Router
         }
     }
 }
+/*
+            if ('post' === $route && $action) {
+                $postController = new PostController();
+                if('read'===$action){
+                    return $postController->read();
+                }else if('create'===$action){
+                    return $postController->create();
+                }
+              
+               
+            } elseif ('contact' === $route) {
+                var_dump('contact');
+            }
+        } else {
+
+
+            */

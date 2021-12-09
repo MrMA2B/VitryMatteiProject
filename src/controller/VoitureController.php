@@ -2,18 +2,18 @@
 
 namespace App\controller;
 
-use App\repository\PostRepository;
+use App\repository\VoitureRepository;
 use App\view\View;
 
-class PostController
+class VoitureController
 {
-    private View $view;
-    private PostRepository $postRepository;
+    private $view;
+    private $postRepository;
 
     public function __construct()
     {
         $this->view = new View();
-        $this->postRepository = new PostRepository();
+        $this->VoitureRepository = new VoitureRepository();
     }
 
     public function create()
@@ -25,18 +25,21 @@ class PostController
         $this->view->render('/post/create');
     }
 
-    public function read(int $id)
+  
+
+
+    public function readAll()
     {
         $this->view->render('/post/read', [
-            'post' => $this->postRepository->get($id),
-            'name' => 'Yassin'
+            'voitures' => $this->VoitureRepository->getVoitures(),
+            
         ]);
     }
 
     public function update(int $id) 
     {
         if ('PUT' === $_SERVER['REQUEST_METHOD']) {
-            $this->postRepository->update($_POST);
+            $this->VoitureRepository->update($_POST);
         }
 
         $this->view->render('/post/update', [
