@@ -16,9 +16,23 @@ class Voiture
     private  $dateAchat = null;
     private $dateVoiture;
     private $kilometre;
+    private $imagePath;
 
 
     
+    public function getImagePath()
+    {
+        return $this->imagePath;
+    }
+
+    public function setImagePath(string $imagePath)
+    {
+        $this->imagePath = $imagePath;
+
+        return $this;
+    }
+
+
     public function getImmat()
     {
         return $this->immat;

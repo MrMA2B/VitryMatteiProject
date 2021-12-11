@@ -12,12 +12,12 @@ class Router
         $action = $_GET['action'] ?? null;
       
         if ($action=='read'){
-            echo ('abc');
+           
             $voitureController = new VoitureController();
             return $voitureController->readAll();
           
         } else {
-            var_dump('hello');
+            var_dump('salut');
             $_GET['action'] = 'read';
          
             include_once 'index.php';

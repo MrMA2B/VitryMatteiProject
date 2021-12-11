@@ -48,6 +48,7 @@ class VoitureRepository extends Database
  
         $post->setDateVoiture($row['dateVoiture']);
         $post->setColor($row['color']);
+        $post->setImagePath($row['imagePath']);
 
         return $post;
     }
