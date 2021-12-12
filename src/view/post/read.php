@@ -13,7 +13,7 @@
             
                 echo('<tr><td>'.$voitures[$i]->getImmat().'</td>');
                 echo("
-                <td rowspan="."'5'"."><img src='assets/images/".$voitures[$i]->getImagePath()."' ></td></tr>" 
+                <td rowspan="."'5'"."><img src='assets/images/".$voitures[$i]->getImagePath()."' width='280' height='220' ></td></tr>" 
                 );
             
                 echo('<tr><td>'.$voitures[$i]->getModele().'</td></tr>');

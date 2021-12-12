@@ -16,13 +16,16 @@ class VoitureController
         $this->voitureRepository = new VoitureRepository();
     }
 
-    public function create()
+    public function create(array $row)
     {
-        if ('POST' === $_SERVER['REQUEST_METHOD']) {
-            $this->postRepository->create($_POST);
-        }
+       
+        $this->voitureRepository->create($row);
         
-        $this->view->render('/post/create');
+        
+        $this->view->render('/post/read', [
+            'voitures' => $this->voitureRepository->getVoitures(),
+            
+        ]);
     }
 
     public function delete(string $immat)

@@ -24,37 +24,23 @@ class VoitureRepository extends Database
 
   
 
-    public function create(array $data = [])
+    public function create(array $data)
     {
-        $this->createQuery(
-            'INSERT INTO post (title, content, createdAt, authorId) VALUES (:title, :content, :createdAt, :authorId)',
-            [
-                'title' => $data['title'],
-                'content' => $data['content'],
-                'createdAt' => (new \DateTime())->format('Y-m-d H:i:s'),
-                'authorId' => 1,
-            ]
-        );
+        $this->createQuery("INSERT INTO `voiture` (`immat`, `marque`, `modele`, `color`, `sold`, `dateAchat`, `dateVoiture`, `kilometre`, `imagePath`) 
+        VALUES ('".$data['immat']."', '".$data['marque']."', '".$data['modele']."', '".$data['color']."', '0', NULL, '2021-12-02', '0', 'base.jpg');");
     }
 
 
     public function delete(string $immat)
     {
-        $this->createQuery(
-            'INSERT INTO post (title, content, createdAt, authorId) VALUES (:title, :content, :createdAt, :authorId)',
-            [
-                'title' => $data['title'],
-                'content' => $data['content'],
-                'createdAt' => (new \DateTime())->format('Y-m-d H:i:s'),
-                'authorId' => 1,
-            ]
-        );
+        $this->createQuery("
+            DELETE FROM `voiture` WHERE `voiture`.`immat` = '".$immat."'");
     }
 
     public function update(string $immat)
     {
         $this->createQuery(
-            "UPDATE `voiture` SET `sold` = '1' WHERE `voiture`.`immat` = '".$immat."';");
+            "UPDATE `voiture` SET `sold` = '1', `dateAchat` = '".(new \DateTime())->format('Y-m-d H:i:s')."' WHERE `voiture`.`immat` = '".$immat."';");
     }
 
     private function buildObject(array $row): Voiture
