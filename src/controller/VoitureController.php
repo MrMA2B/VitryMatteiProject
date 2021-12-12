@@ -22,7 +22,7 @@ class VoitureController
         $this->voitureRepository->create($row);
         
         
-        $this->view->render('/post/read', [
+        $this->view->render('/voiture/read', [
             'voitures' => $this->voitureRepository->getVoitures(),
             
         ]);
@@ -34,7 +34,7 @@ class VoitureController
         $this->voitureRepository->delete($immat);
         
         
-        $this->view->render('/post/read', [
+        $this->view->render('/voiture/read', [
             'voitures' => $this->voitureRepository->getVoitures(),
             
         ]);
@@ -45,7 +45,7 @@ class VoitureController
 
     public function readAll()
     {
-        $this->view->render('/post/read', [
+        $this->view->render('/voiture/read', [
             'voitures' => $this->voitureRepository->getVoitures(),
             
         ]);
@@ -57,7 +57,7 @@ class VoitureController
         $this->voitureRepository->update($immat);
         
         
-        $this->view->render('/post/read', [
+        $this->view->render('/voiture/read', [
             'voitures' => $this->voitureRepository->getVoitures(),
             
         ]);
