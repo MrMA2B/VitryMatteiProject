@@ -17,6 +17,14 @@ class Router
             $voitureController = new VoitureController();
             return $voitureController->readAll();
           
+        }else  if ($getAction=='update'){
+           $immat=$getAction = $_GET['immat'] ?? null;
+      
+
+
+            $voitureController = new VoitureController();
+            return $voitureController->update($immat);
+          
         } else {
             var_dump('salut');
             $_GET['action']='read';

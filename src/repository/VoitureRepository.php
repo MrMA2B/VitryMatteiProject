@@ -37,6 +37,26 @@ class VoitureRepository extends Database
         );
     }
 
+
+    public function delete(string $immat)
+    {
+        $this->createQuery(
+            'INSERT INTO post (title, content, createdAt, authorId) VALUES (:title, :content, :createdAt, :authorId)',
+            [
+                'title' => $data['title'],
+                'content' => $data['content'],
+                'createdAt' => (new \DateTime())->format('Y-m-d H:i:s'),
+                'authorId' => 1,
+            ]
+        );
+    }
+
+    public function update(string $immat)
+    {
+        $this->createQuery(
+            "UPDATE `voiture` SET `sold` = '1' WHERE `voiture`.`immat` = '".$immat."';");
+    }
+
     private function buildObject(array $row): Voiture
     {
         $post = new Voiture;

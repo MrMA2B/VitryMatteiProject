@@ -8,12 +8,12 @@ use App\view\View;
 class VoitureController
 {
     private $view;
-    private $postRepository;
+    private $voitureRepository;
 
     public function __construct()
     {
         $this->view = new View();
-        $this->VoitureRepository = new VoitureRepository();
+        $this->voitureRepository = new VoitureRepository();
     }
 
     public function create()
@@ -25,25 +25,38 @@ class VoitureController
         $this->view->render('/post/create');
     }
 
+    public function delete(string $immat)
+    {
+        
+        $this->voitureRepository->delete($immat);
+        
+        
+        $this->view->render('/post/read', [
+            'voitures' => $this->voitureRepository->getVoitures(),
+            
+        ]);
+    }
+
   
 
 
     public function readAll()
     {
         $this->view->render('/post/read', [
-            'voitures' => $this->VoitureRepository->getVoitures(),
+            'voitures' => $this->voitureRepository->getVoitures(),
             
         ]);
     }
 
-    public function update(int $id) 
+    public function update(string $immat) 
     {
-        if ('PUT' === $_SERVER['REQUEST_METHOD']) {
-            $this->VoitureRepository->update($_POST);
-        }
-
-        $this->view->render('/post/update', [
-            'post' => $this->postRepository->get($id),
+         
+        $this->voitureRepository->update($immat);
+        
+        
+        $this->view->render('/post/read', [
+            'voitures' => $this->voitureRepository->getVoitures(),
+            
         ]);
     }
 }
