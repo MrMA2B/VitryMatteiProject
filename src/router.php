@@ -9,18 +9,19 @@ class Router
     public function run()
     {
         
-        $action = $_GET['action'] ?? null;
+        
+        $getAction = $_GET['action'] ?? null;
       
-        if ($action=='read'){
+        if ($getAction=='read'){
            
             $voitureController = new VoitureController();
             return $voitureController->readAll();
           
         } else {
             var_dump('salut');
-            $_GET['action'] = 'read';
+            $_GET['action']='read';
          
-            include_once 'index.php';
+            include 'index.php';
         }
     }
 }
